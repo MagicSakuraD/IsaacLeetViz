@@ -1,0 +1,12 @@
+# Normalize text files; keep LF in repo for cross-platform scripts
+* text=auto eol=lf
+
+*.py text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf
+*.gitattributes text eol=lf
+
+# Windows scripts if added later
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=lf
