@@ -6,7 +6,7 @@
 
 ## 环境要求
 
-- NVIDIA Isaac Sim（建议 4.5+ / 与 `isaacsim.core.experimental` API 兼容的版本）
+- NVIDIA Isaac Sim 6.0.1
 - 在 Isaac Sim 中打开一个 Stage 后再运行脚本
 - 运行方式：`Window > Script Editor`（交互式 Python），不要当作普通系统 Python 直接跑
 
@@ -23,17 +23,6 @@
 | 文件 | 题目 | 思路 |
 |------|------|------|
 | `numIslands.py` | [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) | DFS 淹没岛屿 |
-
-### 岛屿数量可视化约定
-
-| 状态 | 表现 |
-|------|------|
-| `"1"` 陆地 | 绿色方块 |
-| `"0"` 水 | 蓝色方块 |
-| 外层双重循环扫到的当前格 | 红色高亮 |
-| DFS 标记访问（`"1"` → `"0"`） | 变蓝，并沿 **+Z** 抬升 |
-
-可调参数见脚本顶部：`CELL_SIZE`、`VISIT_LIFT`、`step_delay` 等。
 
 ## 项目结构
 
