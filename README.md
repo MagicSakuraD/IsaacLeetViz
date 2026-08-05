@@ -23,6 +23,28 @@
 | 文件 | 题目 | 思路 |
 |------|------|------|
 | `numIslands.py` | [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) | DFS 淹没岛屿 |
+| `shortestPathBinaryMatrix.py` | [1091. Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) | BFS 八连通最短路 |
+
+### 岛屿数量可视化约定
+
+| 状态 | 表现 |
+|------|------|
+| `"1"` 陆地 | 绿色方块 |
+| `"0"` 水 | 蓝色方块 |
+| 外层双重循环扫到的当前格 | 红色高亮 |
+| DFS 标记访问（`"1"` → `"0"`） | 变蓝，并沿 **+Z** 抬升 |
+
+### 二进制矩阵最短路径可视化约定
+
+| 状态 | 表现 |
+|------|------|
+| `0` 可通行 | 绿色方块 |
+| `1` 障碍 | 深灰方块 |
+| BFS 出队当前格 | 红色高亮 |
+| 已入队 / 已访问 | 青色，并沿 **+Z** 抬升 |
+| 最终最短路径 | 橙色，抬升更高 |
+
+可调参数见各脚本顶部：`CELL_SIZE`、`VISIT_LIFT`、`PATH_LIFT`、`step_delay` 等。
 
 ## 项目结构
 
@@ -31,7 +53,8 @@ IsaacLeetViz/
 ├── README.md
 ├── .gitignore
 ├── .gitattributes
-└── numIslands.py          # 200. Number of Islands
+├── numIslands.py                   # 200. Number of Islands
+└── shortestPathBinaryMatrix.py     # 1091. Shortest Path in Binary Matrix
 ```
 
 后续可按题目增加脚本，例如 `twoSum.py`、`binaryTreeInorder.py` 等。
