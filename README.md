@@ -24,6 +24,7 @@
 |------|------|------|
 | `numIslands.py` | [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) | DFS 淹没岛屿 |
 | `shortestPathBinaryMatrix.py` | [1091. Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) | BFS 八连通最短路 |
+| `orangesRotting.py` | [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | 多源 BFS + orange appearance variants |
 
 ### 岛屿数量可视化约定
 
@@ -44,7 +45,28 @@
 | 已入队 / 已访问 | 青色，并沿 **+Z** 抬升 |
 | 最终最短路径 | 橙色，抬升更高 |
 
-可调参数见各脚本顶部：`CELL_SIZE`、`VISIT_LIFT`、`PATH_LIFT`、`step_delay` 等。
+### 腐烂的橘子可视化约定
+
+前置：使用资产 `C:/OMEN/USD/blenderDAY/orange/orange_var.usd`（脚本每次运行会先删除 `/World/OrangeGrid` 做重置）。
+
+| 状态 | 表现 |
+|------|------|
+| `0` 空格 | 深色垫块 |
+| `1` 新鲜 | 引用 orange_var.usd，`appearance=fresh` |
+| `2` 腐烂 | 引用 orange_var.usd，`appearance=rotten` |
+| 本分钟被感染 | 切到 `rotten`，并沿 **+Z** 抬升 |
+| 当前扩散源 | 垫块短暂红色高亮 |
+
+每个格子用 `XformPrim(..., reset_xform_op_properties=True)` 设置世界坐标，避免叠加在原点。
+
+切换 variant：
+
+```python
+prim.GetVariantSet("appearance").SetVariantSelection("rotten")
+stage.Flush()
+```
+
+或创建时：`stage_utils.add_reference_to_stage(..., variants=[("appearance", "rotten")])`
 
 ## 项目结构
 
@@ -54,7 +76,8 @@ IsaacLeetViz/
 ├── .gitignore
 ├── .gitattributes
 ├── numIslands.py                   # 200. Number of Islands
-└── shortestPathBinaryMatrix.py     # 1091. Shortest Path in Binary Matrix
+├── shortestPathBinaryMatrix.py     # 1091. Shortest Path in Binary Matrix
+└── orangesRotting.py               # 994. Rotting Oranges
 ```
 
 后续可按题目增加脚本，例如 `twoSum.py`、`binaryTreeInorder.py` 等。
